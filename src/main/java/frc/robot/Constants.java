@@ -30,14 +30,15 @@ public final class Constants {
     public static int DRIVE_REVERSE = 1; // Default drive; 1 = Front is panel, -1 = Front is intake
 
     // Arm motors - SparkMax Controller
-    public static final int ARM_MOTOR1 = 5;
-    public static final int ARM_MOTOR2 = 6;
+    public static final int ARM_MOTOR1 = 6;
+    public static final int ARM_MOTOR2 = 7;
     public static final MotorType ARM_MOTOR_TYPE = MotorType.kBrushed;
     public static final IdleMode ARM_IDLE_TYPE = IdleMode.kBrake;
+    public static final int ARM_CURRENT = 30;
     public static final double ARM_SPEED = .375;
 
     // Bucket motor - SparkMaxController
-    public static final int BUCKET_MOTOR = 7;
+    public static final int BUCKET_MOTOR = 5;
     public static final double BUCKET_SPEED = .5;
     public static final MotorType BUCKET_MOTOR_TYPE = MotorType.kBrushed;
 
