@@ -33,11 +33,9 @@ public class RobotContainer {
   private final Button climbUpButton, climbDownButton;
 
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final Drivetrain m_drivetrain = new Drivetrain();
   private final Arm m_Arm = new Arm();
 
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   private final ClimbDown m_climbdown = new ClimbDown(m_Arm);
   private final ClimbUp m_climbup = new ClimbUp(m_Arm);
   private final Drive m_drive = new Drive(m_drivetrain, m_driverController);
@@ -67,10 +65,10 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
-    return m_autoCommand;
-  }
+  // public Command getAutonomousCommand() {
+  //   // An ExampleCommand will run in autonomous
+  //   return m_autoCommand;
+  // }
 
   public Command getDrive() {
     return m_drive;
