@@ -4,7 +4,10 @@
 
 package frc.robot;
 
-import static frc.robot.Constants.CONTROLLER_PORT;
+import edu.wpi.first.wpilibj2.command.button.Button;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+
+import static frc.robot.Constants.*;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
@@ -17,6 +20,7 @@ import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
+
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -25,7 +29,8 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
   // Controller declaration
-  XboxController m_driverController = new XboxController(CONTROLLER_PORT);
+  XboxController m_driverController;
+  private final Button climbUpButton, climbDownButton;
 
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
@@ -39,6 +44,9 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    m_driverController = new XboxController(CONTROLLER_PORT);
+    climbUpButton = new JoystickButton(m_driverController, BUTTON_A);
+    climbDownButton = new JoystickButton(m_driverController, BUTTON_B) ;
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -50,7 +58,8 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    m_driverController.getAButton();
+   climbUpButton.whenHeld(m_climbup);
+   climbDownButton.whenHeld(m_climbdown);
   }
 
   /**
@@ -61,5 +70,9 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return m_autoCommand;
+  }
+
+  public Command getDrive() {
+    return m_drive;
   }
 }
